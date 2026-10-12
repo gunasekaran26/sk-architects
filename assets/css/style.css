@@ -39,7 +39,7 @@ p{margin:0 0 18px;color:var(--muted)}
 .topbar-inner{min-height:36px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .topbar p{margin:0;color:#e6e7e1}
 .topbar-links{display:flex;gap:22px}
-.site-header{position:sticky;top:0;z-index:50;background:rgba(255,254,250,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(38,60,50,.08)}
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(255,254,250,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(38,60,50,.08)}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;min-height:84px;gap:24px}
 .brand{display:flex;align-items:center;gap:12px;min-width:240px}
 .brand-mark{display:grid;place-items:center;width:43px;height:43px;border:1px solid var(--brass);color:var(--brass);font-family:var(--serif);font-size:1.1rem;letter-spacing:-.08em}
@@ -172,8 +172,10 @@ p{margin:0 0 18px;color:var(--muted)}
  .container{width:min(100% - 34px,600px)}
  .topbar-inner{justify-content:center}.topbar-links{display:none}
  .nav-wrap{min-height:74px}.menu-toggle{display:block}
- .nav-links{position:fixed;inset:74px 0 0;background:var(--paper);padding:30px 28px;display:flex;flex-direction:column;align-items:stretch;gap:7px;transform:translateX(100%);transition:transform .3s ease;z-index:60}
+ .nav-links{position:fixed;inset:74px 0 0;background:var(--paper);padding:30px 28px calc(30px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:stretch;gap:7px;transform:translateX(100%);transition:transform .3s ease;z-index:1001;overflow-y:auto;-webkit-overflow-scrolling:touch}
  .nav-links.open{transform:translateX(0)}
+ .nav-links a{flex-shrink:0}
+ .menu-toggle{position:relative;z-index:1002;min-width:44px;min-height:44px;display:grid;place-items:center}
  .nav-links a{font-size:1rem;padding:13px 0;border-bottom:1px solid var(--line)}
  .nav-cta{margin:15px 0 0}
  .hero{min-height:620px}.hero:before{background:linear-gradient(90deg,rgba(19,31,25,.82),rgba(19,31,25,.42)),url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80") center/cover}
