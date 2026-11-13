@@ -208,3 +208,51 @@ p{margin:0 0 18px;color:var(--muted)}
  .footer-bottom{display:block}.footer-bottom span{display:block;margin-top:7px}
  .filter-bar{gap:7px}.filter-btn{padding:8px 12px}
 }
+
+
+/* Client change requests: project carousel, video placeholder and WhatsApp image enquiries */
+.home-project-slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:22px;scrollbar-width:none}
+.home-project-slider::-webkit-scrollbar{display:none}
+.home-project-slider .project-card{flex:0 0 calc((100% - 22px)/2);scroll-snap-align:start}
+.slider-controls{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-top:20px;color:var(--muted);font-size:.82rem}
+.slider-controls button{width:42px;height:42px;border:1px solid var(--line);background:var(--paper);color:var(--forest);font-size:1.2rem;cursor:pointer;transition:.2s}
+.slider-controls button:hover{background:var(--forest);color:white}
+.video-panel{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;align-items:center;background:var(--ivory);padding:35px;border:1px solid var(--line)}
+.video-panel h2{margin:10px 0}.video-panel p{max-width:430px}.video-placeholder{min-height:260px;background:linear-gradient(135deg,#263c32,#18271f);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;letter-spacing:.04em}
+.video-play{width:64px;height:64px;border:1px solid rgba(255,255,255,.7);border-radius:50%;display:grid;place-items:center;padding-left:4px;font-size:1.2rem}
+.video-placeholder-label{display:inline-block;color:var(--brass);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.project-card[data-whatsapp-enquiry]{cursor:pointer}.project-card[data-whatsapp-enquiry]:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+@media(max-width:780px){.home-project-slider .project-card{flex:0 0 calc((100% - 13px)/2)}.video-panel{grid-template-columns:1fr;padding:25px}.video-placeholder{min-height:220px}}
+@media(max-width:480px){.home-project-slider .project-card{flex:0 0 88%}.home-project-slider .project-card img{height:320px}}
+
+
+/* Three independent category image sliders on the homepage */
+.category-gallery-section:nth-of-type(even){background:var(--ivory)}
+.category-slider{overflow:hidden;width:100%}
+.category-slider-track{display:flex;gap:22px;transition:transform .45s ease;will-change:transform}
+.category-slide{position:relative;flex:0 0 calc((100% - 44px)/3);height:360px;overflow:hidden;background:#e5e1d7;cursor:pointer}
+.category-slide img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .55s}
+.category-slide:hover img{transform:scale(1.05)}
+.category-slide:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(16,25,19,.82));pointer-events:none}
+.category-slide-caption{position:absolute;z-index:1;left:22px;right:22px;bottom:20px;color:#fff;display:flex;flex-direction:column;gap:5px}
+.category-slide-caption span{color:#e1cfaa;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase}
+.category-slide-caption strong{font-family:var(--serif);font-size:1.45rem;font-weight:500}
+.category-slide:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.category-slider-controls{margin-top:18px}
+@media(max-width:780px){.category-slide{flex-basis:calc((100% - 22px)/2);height:300px}}
+@media(max-width:480px){.category-slider-track{gap:14px}.category-slide{flex-basis:88%;height:290px}}
+
+
+/* V4 FIX: one full-width image visible at a time in each category slideshow */
+.category-slider{display:block;width:100%;overflow:hidden;position:relative}
+.category-slider-track{display:flex;gap:0;width:100%;transition:transform .5s ease;will-change:transform}
+.category-slide{flex:0 0 100%;width:100%;height:clamp(300px,48vw,560px);min-width:100%;position:relative;overflow:hidden;background:linear-gradient(135deg,#e8e3d8,#c9c3b6)}
+.category-slide img{display:block;width:100%;height:100%;object-fit:cover}
+.category-slide.image-missing{background:linear-gradient(135deg,#e8e3d8,#c9c3b6)}
+.category-slide.image-missing img{display:none}
+.category-slide.image-missing:before{content:"Add project photos to assets/images/" attr(data-category) "/";position:absolute;left:24px;top:24px;color:#263c32;font-size:1rem;z-index:2}
+.category-slide.image-missing:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(16,25,19,.82))}
+.category-slide-caption{z-index:3}
+.category-slider-controls{justify-content:flex-end}
+@media(max-width:780px){.category-slide{flex-basis:100%;height:380px;min-width:100%}}
+@media(max-width:480px){.category-slide{flex-basis:100%;height:300px;min-width:100%}}
